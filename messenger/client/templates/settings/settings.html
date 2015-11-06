@@ -1,0 +1,30 @@
+<template name="settings">
+    <form>
+        <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="inputOldPassword">Old password</label>
+            <input type="password" class="form-control" id="inputOldPassword" placeholder="Enter old password">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Enter new password">
+        </div>
+        <div>
+          <label for="location">Location</label>
+           <select id="location" class="form-control">
+               <option selected disabled>Select location</option>              
+               {{#each locations}}
+                   <option value="{{name}}">{{name}}</option>
+               {{/each}}
+           </select>
+        </div>
+        <button type="submit" class="btn btn-primary submit">Change</button>
+    </form>
+</template>

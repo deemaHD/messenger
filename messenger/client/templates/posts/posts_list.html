@@ -1,0 +1,14 @@
+<template name="postsList">
+  <div class="posts">
+    {{#if currentUser}}
+        {{#each posts}}
+            {{> postItem}}
+        {{/each}}
+    {{/if}}
+  </div>
+  <div class="inputMsg">
+      {{#if currentUser}}
+          {{> sendMsg}}
+      {{/if}}
+  </div>
+</template>
