@@ -41,3 +41,7 @@ body {
 .author {
     float: right;
 }
+
+label.error {
+    color: red;
+}
