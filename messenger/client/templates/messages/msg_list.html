@@ -1,0 +1,12 @@
+<template name="msgList">
+    {{#if currentUser}}  
+        <div class="posts">
+            {{#each messages}}
+            {{> msgItem}}
+            {{/each}}
+        </div>
+        <div class="inputMsg">
+            {{> sendMsg}}
+        </div>
+    {{/if}}
+</template>

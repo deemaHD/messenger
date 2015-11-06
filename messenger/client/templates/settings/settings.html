@@ -1,30 +1,41 @@
 <template name="settings">
-    <form>
-        <div class="form-group">
-            <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-        </div>
-        <div class="form-group">
-            <label for="inputName">Name</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Name">
-        </div>
-        <div class="form-group">
-            <label for="inputOldPassword">Old password</label>
-            <input type="password" class="form-control" id="inputOldPassword" placeholder="Enter old password">
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Enter new password">
-        </div>
-        <div>
-          <label for="location">Location</label>
-           <select id="location" class="form-control">
-               <option selected disabled>Select location</option>              
-               {{#each locations}}
-                   <option value="{{name}}">{{name}}</option>
-               {{/each}}
-           </select>
-        </div>
-        <button type="submit" class="btn btn-primary submit">Change</button>
-    </form>
+    <ul class="nav nav-tabs">
+        <li class="active settingsBtn"><a href="#">User settings</a></li>
+        <li class="passwordBtn"><a href="#">Password</a></li>
+    </ul>
+    <div class="userSettings">
+        <form>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="inputName">Name</label>
+                <input type="text" class="form-control" id="inputName" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label for="location">Location</label>
+               <select id="location" class="form-control">
+                   <option selected disabled>Select location</option>              
+                   {{#each locations}}
+                       <option value="{{name}}">{{name}}</option>
+                   {{/each}}
+               </select>
+            </div>
+            <button type="submit" class="btn btn-primary submitSettings">Change</button>
+        </form>
+    </div>
+    <div class="password hiden">
+        <form>
+            <div class="form-group">
+                <label for="inputOldPassword">Old password</label>
+                <input type="password" class="form-control" id="inputOldPassword" placeholder="Enter old password">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Enter new password">
+            </div>
+            <button type="submit" class="btn btn-primary submitPassword">Change</button>
+        </form>
+    </div>
 </template>

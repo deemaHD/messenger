@@ -1,10 +1,14 @@
-if (Posts.find().count() === 0) {
-    Posts.insert({
-      message: 'Introducing Telescope'
+if (Messages.find().count() === 0) {
+    Messages.insert({
+        message: 'Hello',
+        location: 'Ukraine',
+        author: 'user1'
     });
 
-    Posts.insert({
-      message: 'Meteor'
+    Messages.insert({
+        message: 'Hi',
+        location: 'Ukraine',
+        author: 'user2'
     });
 }
 

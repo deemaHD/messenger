@@ -1,11 +1,11 @@
 Router.configure({
-    layoutTemplate: 'layout', // default route
-    loadingTemplate: 'loading', // template for loading
-    waitOn: function() { return Meteor.subscribe('posts'); } // subscribes for cllection
+    layoutTemplate: 'layout',
+    loadingTemplate: 'loading',
+    waitOn: function() { return Meteor.subscribe('messages'); }
 });
 
 Router.map(function() {
-    this.route('postsList', {path: '/'});     // path for 'postList' template
+    this.route('msgList', {path: '/'});
     this.route('settings', {path: '/settings'});
     this.route('login', {path: '/login'});
 });
@@ -20,13 +20,13 @@ var mustBeSignedIn = function() {
 
 var goHome = function() {
     if (Meteor.user()) {
-        Router.go('postsList');
+        Router.go('msgList');
     } else {
         this.next();
     }
 };
 
-Router.onBeforeAction('loading'); // show loading defore all actions
+Router.onBeforeAction('loading');
 
 Router.onBeforeAction(mustBeSignedIn, {except: ['login']});
 Router.onBeforeAction(goHome, {only: ['/', 'login']});

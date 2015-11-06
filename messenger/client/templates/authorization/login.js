@@ -11,28 +11,35 @@ Template.login.events({
         $('.loginBtn').removeClass('active');
         $('.registrBtn').addClass('active');
     },
-    'click #login-button': function(e,t){
-        var email = t.find('#login-email').value,
-            password = t.find('#login-password').value;
+    'click #login-button': function (e) {
+        var email = $('#login-email').val(),
+            password = $('#login-password').val();
 
         Meteor.loginWithPassword(email, password, function(err){
-          console.log(err);
+            if (err) console.log(err);
         });
     },
-    'click #register-btn': function(e,t){
-        var email = t.find('#email').value, // change to hash
-            username = t.find('#username').value,
-            password = t.find('#password').value,
-            location = t.find('#location').value;
+    'click #register-btn': function (e) {
+        var options = {
+            email: $('#email').val(),
+            username: $('#username').val(),
+            password: $('#password').val(),
+            location: $('#location').val()    
+        };
 
-        Accounts.createUser({username:username,password:password,email:email, profile: {location: location}}, function(err){
-          console.log(err);
+        Accounts.createUser({ 
+            username: options.username, 
+            password: options.password, 
+            email: options.email, 
+            profile: {location: options.location}
+        }, function (err) {
+          if (err) console.log(err);
         });
     }
 });
 
 Template.login.helpers({
-  locations: function() {
-      return Locations.find();
-  }
+    locations: function () {
+        return Locations.find();
+    }
 });

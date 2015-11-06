@@ -2,13 +2,13 @@ Template.sendMsg.events({
     'click .sendMsg': function(e) {
         e.preventDefault();
 
-        var post = {
+        var message = {
             message: $('.message').val(),
             author: Meteor.user().username,
             location: Meteor.user().profile.location
         };
 
-        post._id = Posts.insert(post);
+        Messages.insert(message);
         
         $('.message').val('');
         $('.posts').animate({

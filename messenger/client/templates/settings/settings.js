@@ -1,7 +1,7 @@
 Template.settings.helpers({
-  locations: function() {
-      return Locations.find();
-  }
+    locations: function() {
+        return Locations.find();
+    }
 });
 
 Template.settings.rendered = function () {
@@ -13,12 +13,10 @@ Template.settings.rendered = function () {
 };
 
 Template.settings.events({
-    'click .submit': function () {
+    'click .submitSettings': function () {
         var options = {
             email: $('#inputEmail').val(),
             username: $('#inputName').val(),
-            oldPassword: $('#inputOldPassword').val(),
-            password: $('#inputPassword').val(),
             location: $('#location').val()
         };
         
@@ -27,9 +25,27 @@ Template.settings.events({
             'username': options.username,
             'profile.location': options.location
         }} );
+    },
+    'click .submitPassword': function () {
+        var options = {
+            oldPassword: $('#inputOldPassword').val(),
+            newPassword: $('#inputPassword').val()
+        };
         
-        if (options.oldPassword && options.password) {
-            Accounts.changePassword(options.oldPassword, options.password);    
+        if (options.oldPassword && options.newPassword) {
+            Accounts.changePassword(options.oldPassword, options.newPassword);    
         }
+    },
+    'click .settingsBtn': function () {
+        $('.userSettings').removeClass('hiden');
+        $('.password').addClass('hiden');
+        $('.passwordBtn').removeClass('active');
+        $('.settingsBtn').addClass('active');
+    },
+    'click .passwordBtn': function () {
+        $('.password').removeClass('hiden');
+        $('.userSettings').addClass('hiden');
+        $('.settingsBtn').removeClass('active');
+        $('.passwordBtn').addClass('active');
     }
 });
